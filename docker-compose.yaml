@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mariadb-server:
+    image: mariadb:10.11.7-jammy
+    hostname: mariadb-server
+    environment:
+      MARIADB_ROOT_PASSWORD: RootPassword123!
+      EDITOR: mcedit
+    command: >
+      /bin/bash -c "
+        apt-get update &&
+        apt-get install -y mc pspg &&
+        docker-entrypoint.sh mariadbd
+      "
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+      - ./mariadb.cnf:/etc/mysql/conf.d/mariadb.cnf
+    restart: always

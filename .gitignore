@@ -2,7 +2,8 @@
 /dist
 /node_modules
 /build
-
+mariadb_data
+mariadb.cnf
 # Logs
 logs
 *.log
